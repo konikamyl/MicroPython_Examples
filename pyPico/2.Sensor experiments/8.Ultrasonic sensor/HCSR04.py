@@ -14,10 +14,10 @@ class HCSR04():
         while self.echo.value() == 0:
             pass
         if self.echo.value() == 1:
-            ts=ticks_us()                   #开始时间
-            while self.echo.value() == 1:   #等待脉冲高电平结束
+            ts=ticks_us()                   #starting time
+            while self.echo.value() == 1:   #wait for the end of the pulse high level
                 pass
-            te=ticks_us()                   #结束时间
-            tc=te-ts                        #回响时间（单位us，1us=1*10^(-6)s）
-            distance=(tc*170)/10000         #距离计算 （单位为:cm）
+            te=ticks_us()                   #end time
+            tc=te-ts                        #reverberation time (in us, 1us=1*10^(-6)s)
+            distance=(tc*170)/10000         #distance calculation (unit: cm)
         return distance

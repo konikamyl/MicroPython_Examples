@@ -1,38 +1,38 @@
 '''
-实验名称：流水灯
-版本：v1.0
-日期：2021.1
-作者：01Studio
+Experiment name: Running lights
+Version: v1.0
+Date: 2021.1
+Author: 01Studio
 '''
 
-#导入相关模块
+#import related modules
 from machine import Pin
 import time
 
-#构建LED对象
+#building LED objects
 LED1 = Pin(18, Pin.OUT)
 LED2 = Pin(19, Pin.OUT)
 LED3 = Pin(20, Pin.OUT)
 
-#关闭所有LED
+#switch off all LEDs
 LED1.low()
 LED2.low()
 LED3.low()
 
-#while True表示一直循环
+#while True indicates a continuous loop
 while True:
 
-    #LED1亮1秒
+    #LED1 on for 1 second
     LED1.high()
     time.sleep_ms(1000)
     LED1.low()
 
-    #LED2亮1秒
+    #LED2 on for 1 second
     LED2.value(1)
     time.sleep_ms(1000)
     LED2.value(0)
 
-    #LED3亮1秒
+    #LED3 on for 1 second
     LED3.value(1)
     time.sleep_ms(1000)
     LED3.value(0)

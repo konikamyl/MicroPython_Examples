@@ -1,23 +1,23 @@
 '''
-实验名称：按键(GPIO)
-版本：v1.0
-日期：2021-1
-作者：01Studio
-社区：www.01studio.org
+Experiment name: Keypad (GPIO)
+Version: v1.0
+Date: 2021-1
+Author: 01Studio
+Community: www.01studio.org
 '''
 
 from machine import Pin
 
-#构建LED对象
+#building the LED object
 led=Pin(25, Pin.OUT)
 
-#配置按键
+#key configuration
 key = Pin(14, Pin.IN, Pin.PULL_UP)
 
 while True:
 
-    if key.value()==0: #KEY被按下接地
-        led.high()    #点亮LED
+    if key.value()==0: #KEY is pressed to ground
+        led.high()    #light up the LED
         
     else:
-        led.low()     #关闭LED
+        led.low()     #switch off the LED

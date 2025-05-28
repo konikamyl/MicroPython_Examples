@@ -1,37 +1,37 @@
 '''
-实验名称：PWM(蜂鸣器)
-版本：v1.0
-日期：2021-1
-作者：01Studio
-说明：通过不同频率的PWM信号输出，驱动无源蜂鸣器发出不同频率的声音。
+Experiment name: PWM (Buzzer)
+Version: v1.0
+Date: 2021-1
+Author: 01Studio
+Description： Drive a passive buzzer to emit sound of different frequencies by outputting PWM signals with different frequencies.
 '''
 
 from machine import Pin, PWM
 import time
 
-Beep = PWM(Pin(22)) # 引脚是25，在同一语句下创建和配置 PWM
-Beep.duty_u16(32768) # 占空比50%，相当于方波；
+Beep = PWM(Pin(22)) # pin is 25, create and configure the PWM in the same statement
+Beep.duty_u16(32768) # duty cycle 50 per cent, equivalent to a square wave;
 
-#蜂鸣器发出频率200Hz响声
+#buzzer with a frequency of 200 Hz
 Beep.freq(200)
 time.sleep_ms(1000)
 
-#蜂鸣器发出频率400Hz响声
+#buzzer with a frequency of 400 Hz
 Beep.freq(400)
 time.sleep_ms(1000)
 
-#蜂鸣器发出频率600Hz响声
+#buzzer with a frequency of 600 Hz
 Beep.freq(600)
 time.sleep_ms(1000)
 
-#蜂鸣器发出频率800Hz响声
+#buzzer with a frequency of 800 Hz
 Beep.freq(800)
 time.sleep_ms(1000)
 
-#蜂鸣器发出频率1000Hz响声
+#buzzer with a frequency of 1000 Hz
 Beep.freq(1000)
 time.sleep_ms(1000)
 
-#停止
+#discontinue
 Beep.deinit()
 

@@ -1,9 +1,9 @@
 '''
-实验名称：定时器
-版本：v1.0
-日期：2021.1
-作者：01Studio
-说明：通过定时器让LED周期性每秒闪烁1次
+Experiment name: Timer
+Version: v1.0
+Date: 2021.1
+Author: 01Studio
+Description： Timer to make LED blink periodically 1 time per second
 '''
 from machine import Pin,Timer
 
@@ -13,6 +13,6 @@ def fun(tim):
 
     led.toggle()
 
-#构建定时器
+#building timer
 tim = Timer()
-tim.init(period=1000, mode=Timer.PERIODIC,callback=fun) #周期为1000ms
+tim.init(period=1000, mode=Timer.PERIODIC,callback=fun) #cycle time of 1000ms

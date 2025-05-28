@@ -1,21 +1,21 @@
 '''
-实验名称：舵机(Servo)-180°
-版本：v1.0
-日期：2021.1
-作者：01Studio
-说明：控制舵机旋转不同角度。
+Experiment name: Servo - 180°
+Version: v1.0
+Date: 2021.1
+Author: 01Studio
+Description： Control the servo to rotate different angles.
 '''
 
 from machine import Pin, PWM
 import time
 
-S1 = PWM(Pin(0)) # Servo1的引脚是0
-S1.freq(50) #舵机控制信号频率
+S1 = PWM(Pin(0)) # Servo1 pin is 0
+S1.freq(50) #Servo control signal frequency
 
 '''
-说明：舵机控制函数
-功能：180度舵机：angle:-90至90 表示相应的角度
-     360连续旋转度舵机：angle:-90至90 旋转方向和速度值。
+Description: Servo control function
+Function: 180 degree servo: angle:-90 to 90 indicates the corresponding angle.
+     360 degree continuous rotation servo: angle:-90 to 90 rotation direction and speed value.
 '''
 def Servo(servo,angle):
     a = int(((angle+90)*2/180+0.5)/20*65535)
@@ -24,22 +24,22 @@ def Servo(servo,angle):
 
 while True:
     
-    #-90度
+    #-90 degrees
     Servo(S1,-90)
     time.sleep(1)
 
-    #-45度
+    #-45 degrees
     Servo(S1,-45)
     time.sleep(1)
 
-    #-0度
+    #0 degrees
     Servo(S1,0)
     time.sleep(1)
 
-    #45度
+    #45 degrees
     Servo(S1,45)
     time.sleep(1)
 
-    #90度
+    #90 degrees
     Servo(S1,90)
     time.sleep(1)

@@ -1,13 +1,13 @@
 '''
-实验名称：点亮板载LED灯
-版本：v1.0
-日期：2021.1
-作者：01Studio
-社区：www.01studio.org
+Experiment name: Light up the onboard LED light
+Version: v1.0
+Date: 2021.1
+Author: 01Studio
+Community: www.01studio.org
 '''
 
-#导入Pin模块
+# import Pin module
 from machine import Pin
 
-LED = Pin(25, Pin.OUT) #构建LED对象
-LED.value(1) #点亮LED,高电平点亮
+LED = Pin(25, Pin.OUT) #build the LED object
+LED.value(1) #light up LED, high level light up

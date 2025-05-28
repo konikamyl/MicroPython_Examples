@@ -1,37 +1,37 @@
 '''
-实验名称：土壤湿度传感器
-版本：v1.0
-日期：2021.1
-作者：01Studio 【www.01Studio.org】
-说明：通过土壤湿度传感器对土壤湿度测量并显示。
+Experiment Name: Soil moisture sensor
+Version: v1.0
+Date： 2021.1
+Author： 01Studio 【www.01Studio.org】
+Description： Measurement and display of soil moisture by soil moisture sensor.
 '''
 
-#导入相关模块
+#importing related modules
 import time
 from machine import Pin,SoftI2C,ADC
 from ssd1306 import SSD1306_I2C
 
-#初始化oled
-i2c = SoftI2C(scl=Pin(10), sda=Pin(11))   #SoftI2C初始化：scl--> 10, sda --> 11
-oled = SSD1306_I2C(128, 64, i2c, addr=0x3c) #OLED显示屏初始化：128*64分辨率,OLED的I2C地址是0x3c
+#initialising oled
+i2c = SoftI2C(scl=Pin(10), sda=Pin(11))   #SoftI2C initialisation: scl --> 10, sda --> 11
+oled = SSD1306_I2C(128, 64, i2c, addr=0x3c) #OLED display initialisation: 128*64 resolution, OLED's I2C address is 0x3c
 
-#初始化ADC1,Pin=27
+#initialise ADC1,Pin=27
 Soil = ADC(1)
 
 while True:
 
-	oled.fill(0)  # 清屏显示黑色背景
-	oled.text('01Studio', 0, 0)  # 首行显示01Studio
-	oled.text('Soil test:', 0, 15)      # 次行显示实验名称
+	oled.fill(0)  # clear screen with black background
+	oled.text('01Studio', 0, 0)  # first line display 01Studio
+	oled.text('Soil test:', 0, 15)      # the next line displays the name of the experiment
 
-	value=Soil.read_u16() #获取ADC数值
+	value=Soil.read_u16() #get ADC values
 
-    #显示数值
- 	oled.text(str(value)+' (65535)',0,40)
- 	#计算电压值，获得的数据0-4095相当于0-3V，（'%.2f'%）表示保留2位小数
- 	oled.text(str('%.2f'%(value/65535*3.3))+' V',0,55)
+    #display value
+	oled.text(str(value)+' (65535)',0,40)
+ 	#calculation of the voltage value, the data obtained 0-4095 corresponds to 0-3V, (‘%.2f’%) means that 2 decimals are retained
+	oled.text(str('%.2f'%(value/65535*3.3))+' V',0,55)
 
-	#判断土壤湿度，分3档显示。
+	#determines soil moisture in a 3-speed display.
 	if 0 <= value <=19957:
 		oled.text('Dry', 60, 55)
 
@@ -41,5 +41,5 @@ while True:
 	if 35816 < value <= 65535:
 		oled.text('Wet  ', 60, 55)
 
- 	oled.show()
- 	time.sleep_ms(1000)
+	oled.show()
+	time.sleep_ms(1000)
